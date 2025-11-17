@@ -6,3 +6,4 @@ def remove_bg(input_path):
     img = Image.open(input_path)
     result = remove(img).convert("RGBA")
     return result
+
