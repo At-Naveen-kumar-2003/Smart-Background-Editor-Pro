@@ -96,7 +96,7 @@ python mainfile.py
 > *(You can add screenshots like this)*
 
 ```
-![App Screenshot](https://raw.githubusercontent.com/yourusername/yourrepo/main/image.png)
+![image](https://github.com/At-Naveen-kumar-2003/Smart-Background-Editor-Pro/blob/master/3.WHAT.jpg)
 
 ```
 
