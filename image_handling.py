@@ -1,34 +1,18 @@
-from tkinter import filedialog, messagebox
-from PIL import Image, ImageTk
 import os
+from PIL import Image, ImageTk
 
-def make_thumbnail(pil_img, max_size=350, zoom_scale=1.0):
-    img = pil_img.copy()
-    img.thumbnail((int(max_size * zoom_scale), int(max_size * zoom_scale)))
-    return ImageTk.PhotoImage(img)
+SUPPORTED_FORMATS = [".png", ".jpg", ".jpeg"]
 
-def upload_image():
-    file_path = filedialog.askopenfilename(filetypes=[("Image Files", "*.png;*.jpg;*.jpeg")])
-    return file_path
-from tkinter import *
-import ttkbootstrap as ttk
-from ttkbootstrap.constants import *
-from tkinterdnd2 import TkinterDnD
-from image_handling import upload_image, make_thumbnail
+def load_image(path):
+    return Image.open(path)
 
-class SmartBGApp(TkinterDnD.Tk):
-    pass
+def save_image(img, save_path):
+    img.save(save_path)
 
-if __name__ == "__main__":
-    root = SmartBGApp()
-    root.title("Smart Background Editor Pro")
-    root.geometry("1350x750")
-    root.style = ttk.Style("flatly")
+def make_thumbnail(img, zoom_scale, max_size=350):
+    thumb = img.copy()
+    thumb.thumbnail((int(max_size * zoom_scale), int(max_size * zoom_scale)))
+    return ImageTk.PhotoImage(thumb)
 
-    def on_upload():
-        path = upload_image()
-        if path:
-            messagebox.showinfo("Selected", f"Loaded {path}")
-
-    ttk.Button(root, text="Upload Image", command=on_upload, bootstyle=SUCCESS).pack(pady=20)
-    root.mainloop()
+def valid_format(path):
+    return os.path.splitext(path)[1].lower() in SUPPORTED_FORMATS
