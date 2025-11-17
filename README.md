@@ -96,7 +96,8 @@ python mainfile.py
 > *(You can add screenshots like this)*
 
 ```
-![GUI Preview](screenshots/app_preview.png)
+![App Screenshot](https://raw.githubusercontent.com/yourusername/yourrepo/main/image.png)
+
 ```
 
 ---
